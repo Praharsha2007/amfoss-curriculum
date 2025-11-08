@@ -1,3 +1,8 @@
 This is Praharsha.\
-Tasks Completed:\
-Task - 01
+## TASK STATUS
+
+My statistics is as shown :
+
+| Task List | Description | Status |
+|-----------|-------------|--------|
+| [Task-01]() | Git Exercises | Completed |
