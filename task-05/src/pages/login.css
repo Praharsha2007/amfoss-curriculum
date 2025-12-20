@@ -1,0 +1,171 @@
+body{
+    background-color: #282e2d;
+    display: flex;
+    justify-content: center;
+}
+
+.passwordlogin{
+    display: flex;
+    position: absolute;
+    top: 53%;
+    background-color: #9C7B5B;
+    border: none;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    left: 38%;
+    padding: clamp(4px, 0.8vw, 8px);
+    align-items: center;
+}
+
+.passwordinput{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-size: clamp(4px, 1vw, 16px);
+    height: clamp(36px, 4vh, 48px);
+    outline: none;
+}
+
+.passwordinput::placeholder{
+    color: #E3E3E3;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.usernamelogin{
+    display: flex;
+    position: absolute;
+    top: 43%;
+    background-color: #9C7B5B;
+    border: none;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+    align-items: center;
+    padding: clamp(4px, 0.8vw, 8px);
+}
+
+.usernameinput{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: clamp(36px, 4vh, 48px);
+    font-size: clamp(4px, 1vw, 16px);
+    outline: none;
+}
+
+.usernameinput::placeholder{
+    font-size: clamp(4px, 1vw, 16px);
+    color: #E3E3E3;
+}
+
+.Done{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: aliceblue;
+    height: clamp(20px, 6vh, 58px);
+    width: clamp(60px, 6vw, 180px);
+    background-color: #9C7B5B;
+    top: 61%;
+    left: 46.75%;
+    font-size: clamp(4px, 1vw, 16px);
+    border:none;
+}
+
+
+.enter_username{
+    color: aliceblue;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.enter_password{
+    color: aliceblue;
+    top: 47%;
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.login{
+    color: aliceblue;
+    position: absolute;
+    top: 18%;
+    left: 45%;
+    font-size: clamp(4px, 4vw, 50px);
+}
+
+
+.switch_signup{
+    color: aliceblue;
+    position: absolute;
+    top: 67%;
+    left: 41%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.register{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(20px, 6vh, 58px);
+    width: clamp(60px, 6vw, 180px);
+    overflow: hidden;
+    background-color: #9C7B5B;
+    color: aliceblue;
+    top: 74%;
+    left: 46.75%;
+    border:none;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.signup_link{
+    color: aliceblue;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.done_link{
+    color: aliceblue;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+
+.line1{
+    height: clamp(1px, 0.2vh, 2px);
+    width: clamp(26px, 25vw, 4000px);
+    background-color: aliceblue;
+    position: absolute;
+    top: 81%;
+    left: 38%;
+}
+
+
+.forgot_password{
+    color: aliceblue;
+    position: absolute;
+    top: 57%;
+    right: 37%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+
+.Alternates{
+    position: absolute;
+    bottom: clamp(6%, 8.8%, 10%);
+    left: 48%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.google_login{
+    color: aliceblue;
+    position: absolute;
+    font-size: clamp(4px, 1vw, 16px);
+    top: 79.25%;
+    left: 45%;
+    height: clamp(10px, 6vh, 58px);
+    width: clamp(10px, 6vw, 200px);
+}
+

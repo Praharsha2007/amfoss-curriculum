@@ -1,0 +1,16 @@
+.Homebutton{
+    background-color: #9C6835;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    border-radius: 15px;
+    height: 6vh;
+    width: 7vw;
+    top: 13px;
+    border: 1px double aliceblue;
+    cursor: pointer;
+    left: 20%;
+    margin: 2px;
+    height: clamp(10px,6vh,6vh);
+    width: clamp(10px,7vw,7vw);
+}

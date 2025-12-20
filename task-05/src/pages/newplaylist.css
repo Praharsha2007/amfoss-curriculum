@@ -1,0 +1,39 @@
+body{
+    position: relative;
+}
+.NArrangement{
+    display: flex;
+    flex-direction: column;
+}
+.NControls{
+    display: block;
+    flex-direction: row;
+    gap: 200px;
+    position: absolute;
+    right: 10%;
+    top: 18%;
+}
+
+
+.playlistInput{
+    height: 50px;
+    width: 500px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 19%;
+    left: 1%;
+    background-color: #9C7B5B;
+    border: 15px;
+    outline: none;
+    
+}
+.playlistInput::placeholder{
+    color: aliceblue;
+    font-size: 15px;
+}
+
+.Title{
+    position: absolute;
+    top: 10%;
+    left: 1%;
+}

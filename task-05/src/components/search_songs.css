@@ -1,0 +1,47 @@
+.SearchSong{
+    display: flex;
+    background-color: transparent;
+    width: 50vw;
+    height: 100px;
+    position: relative;
+}
+
+.SImage img{
+    background-color: antiquewhite;
+    object-fit: contain;
+    height: 85px;
+    position: absolute;
+    top: 5%;
+    left: 0.5%;
+}
+.STitle{
+    position: absolute;
+    top: 15%;
+    left: 12%;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.SArtist{
+    position: absolute;
+    top: 38%;
+    left: 12%;
+    font-size: 17px;
+    color: aliceblue;
+}
+.Search_Controls{
+    position: absolute;
+    top: 40%;
+    right: 5%;
+}
+
+.Suggestions{
+    display: flex;
+    flex-direction: column;
+}
+
+.AddS{
+    position: absolute;
+    top: 40%;
+    right: 15%;
+}

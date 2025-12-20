@@ -1,0 +1,17 @@
+.PArrangement{
+    display: flex;
+    flex-direction: column;
+}
+.PlaylistTitle{
+    position: absolute;
+    top: 15%;
+    left: 1%;
+}
+.PControls{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    right: 10%;
+    position: absolute;
+    top: 18%;
+}

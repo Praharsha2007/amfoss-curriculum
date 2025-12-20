@@ -1,0 +1,128 @@
+.Bar{
+  display: flex;
+  bottom: 0px;
+  position: absolute;
+  height: 9vh;
+  width: 100vw;
+  left: 0px;
+  background-color: #9C7B5B;
+  
+}
+
+.Pause{
+    background-color: #9C7B5B;
+    height: 50px;
+    width: 50px;
+    left: 48%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Pause img{
+    object-fit: fill;
+}
+
+.Rewind{
+    background-color: #9C7B5B;
+    height: 50px;
+    width: 50px;
+    left: 44%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Rewind img{
+    object-fit: fill;
+}
+
+.Forward{
+    background-color: #9C7B5B;
+    height: 50px;
+    width: 50px;
+    left: 52%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Forward img{
+    object-fit: fill;
+}
+
+.details{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6vh;
+    width: 6vw;
+    background-color: #9C7B5B;
+    right: 20%;
+    top: 10%;
+    color: aliceblue;
+    border: double aliceblue;
+    margin: none;
+
+}
+
+.Slider{
+    position: absolute;
+    bottom: 40%;
+    height: 4px;
+    width: 520px;
+    background: #D9D9D9;
+    left: 35.8%;
+}
+
+.Image{
+    border-radius: 50%;
+    background-color: #D9D9D9;
+    height: 60px;
+    width: 63px;
+    top: 10%;
+    position: absolute;
+    left: 1%;
+
+}
+
+.Song{
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    font-size: clamp(0.55rem, 1vw, 2rem);
+}
+
+.Artist{
+    position: absolute;
+    top: 30%;
+    left: 6%;
+    font-size: clamp(0.55rem, 1vw, 2rem);
+}
+
+.Like{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6vh;
+    width: 6vw;
+    background-color: #9C7B5B;
+    right: 10%;
+    top: 10%;
+    border: double aliceblue;
+    margin: none;
+    object-fit: fill;
+}
+
+
+@media screen and (max-width:680px) {
+    .Bar{
+        overflow-x: hidden;
+        size: 10px;
+    }    
+}

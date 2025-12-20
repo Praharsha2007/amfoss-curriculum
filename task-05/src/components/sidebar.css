@@ -1,0 +1,62 @@
+body{
+    display: flex;
+}
+
+.Sidebar{
+    display: flex;
+    position: relative;
+    height: 91vh;
+    width: 28vw;
+    background-color: #404C51;
+    top: 0%;
+    color: aliceblue;
+    overflow: hidden;
+}
+
+.Playlist{
+    position: absolute;
+    top: 25%;
+    left: 6%;
+    color: aliceblue;
+    
+}
+
+.Songs{
+    position: absolute;
+    top: 40%;
+    color: aliceblue;
+    left: 6%;
+    
+}
+
+.Settings_Button{
+    position: absolute;
+    top: 55%;
+    left: 6%;
+    color: aliceblue;
+    
+}
+
+.NewPlaylist{
+    position: absolute;
+    top: 70%;
+    left: 6%;
+    color: aliceblue;
+}
+
+.Username{
+    position: absolute;
+    top: 2%;
+    color: aliceblue;
+    left: 22.5%;
+
+}
+
+.SideBack{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    background-color: #404C51;
+    width: 60px;
+    height: 60px;
+}

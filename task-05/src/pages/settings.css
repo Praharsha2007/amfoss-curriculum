@@ -1,0 +1,62 @@
+body{
+    background-color: #282e2d;
+}
+.username{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9C7B5B;
+    top: 70%;
+    left: 40%;
+    color: aliceblue;
+    border:none;
+    overflow: hidden;
+    margin: none;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.password{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9C7B5B;
+    top: 55%;
+    left: 40%;
+    border:none;
+    color: aliceblue;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    overflow: hidden;
+    margin: none;
+}
+
+.account{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: aliceblue;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    background-color: #9C7B5B;
+    top: 40%;
+    left: 40%;
+    border:none;
+    margin: none;
+}
+
+.title{
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    font-size: clamp(4px, 4vw, 50px);
+}
+

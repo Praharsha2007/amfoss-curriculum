@@ -1,0 +1,36 @@
+body{
+    background-color: #282e2d;
+    position: relative;
+    font-family: Verdana;
+}
+
+
+.Recently_Played{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 120px;
+    
+
+}
+
+.Recommended_Songs{
+    display: flex;
+    flex-direction: row;
+    gap: 120px;
+
+    z-index: 0;
+    flex-wrap: wrap;
+}
+
+.SideMenu{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+.DContainer{
+    display: flex;
+    flex-direction: column;
+    
+
+}

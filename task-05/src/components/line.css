@@ -1,0 +1,9 @@
+.line{
+    height: 2px;
+    width: 25vw;
+    color: aliceblue;
+    background-color: aliceblue;
+    position: absolute;
+    top: 69%;
+    left: 38%;
+}

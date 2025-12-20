@@ -1,0 +1,13 @@
+.Playlist_View{
+    display: flex;
+    position: absolute;
+    height: 75px;
+    width: 25vw;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    background-color: #9C7B5B;
+    border: 1px double aliceblue;
+    border-radius: 15px;
+    
+}

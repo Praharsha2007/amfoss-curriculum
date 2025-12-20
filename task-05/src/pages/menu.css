@@ -1,0 +1,28 @@
+body{
+    background-color: #282e2d;
+    position: relative;
+}
+
+.Playlist_Title{
+    position: absolute;
+    top: 15%;
+    left: 2%;
+}
+
+.Arrangements{
+    display: flex;
+    flex-direction: row;
+    gap: 120px;
+    position: absolute;
+    top: 40%;
+    left: 2%;
+}
+
+.Controls{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    position: absolute;
+    right: 10%;
+    top: 18%;
+}

@@ -1,0 +1,40 @@
+.PlaylistSong{
+    display: flex;
+    background-color: transparent;
+    width: 100vw;
+    height: 100px;
+    position: relative;
+    border: 0.5px double #fff;
+}
+
+.PImage img{
+    background-color: antiquewhite;
+    object-fit: contain;
+    height: 85px;
+    position: absolute;
+    top: 5%;
+    left: 0.5%;
+}
+.PTitle{
+    position: absolute;
+    top: 15%;
+    left: 6%;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.PArtist{
+    position: absolute;
+    top: 38%;
+    left: 6%;
+    color: aliceblue;
+    font-size: 17px;
+}
+.SControls{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    position: absolute;
+    right: 10%;
+    top: 18%;
+}

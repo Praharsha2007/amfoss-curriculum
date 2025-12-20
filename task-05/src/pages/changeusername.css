@@ -1,0 +1,245 @@
+body{
+    align-items: center;
+    justify-content: center;
+}
+.email{
+    display: flex;
+    position: absolute;
+    top: 33%;
+    background-color: #9C7B5B;
+    border: none;
+    width: 25vw;
+    height: 5vh;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    left: 38%;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px 5px;
+}
+
+.emailinput{
+    background: none;
+    border: none;
+    width: 25vw;
+    height: 4vh;
+    border-radius: 15px;
+    outline: none;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+}
+.emailinput::placeholder{
+    color: #E3E3E3;
+}
+
+.passwordsignup{
+    display: flex;
+    position: absolute;
+    top: 53%;
+    background-color: #9C7B5B;
+    margin: none;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    border: none;
+    width: 25vw;
+    height: 5vh;
+    left: 38%;
+    border-radius: 15px;
+    align-items: center;
+    padding: 5px 5px;
+}
+
+.passwordinput{
+    background-color: transparent;
+    border: none;
+    width: 25vw;
+    height: 4vh;
+    margin: none;
+    border-radius: 15px;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    outline: none;
+}
+.passwordinput::placeholder{
+    color: #E3E3E3;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+
+.usernamesignup{
+    display: flex;
+    position: absolute;
+    top: 43%;
+    background-color: #9C7B5B;
+    margin: none;
+    border: none;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    left: 38%;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px 5px;
+}
+
+.usernameinput{
+    background-color: transparent;
+    border: none;
+    width: 25vw;
+    height: 4vh;
+    margin: none;
+    overflow: hidden;
+    width: clamp(60px, 25vw, 475px);
+    height: clamp(22px, 5vh, 56px);
+    font-size: clamp(4px, 1vw, 16px);
+    border-radius: 15px;
+    outline: none;
+}
+
+.usernameinput::placeholder{
+    color: #E3E3E3;
+
+}
+
+.submit{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6vh;
+    width: 6vw;
+    background-color: #9C7B5B;
+    top: 75%;
+    left: 47%;
+    overflow: hidden;
+    border: none;
+    border-radius: 15px;
+    font-size: clamp(4px, 1vw, 16px);
+    padding: 5px 5px;
+}
+
+.enter_email{
+    color: aliceblue;
+    position: absolute;
+    top: 28%;
+    font-size: clamp(4px, 1vw, 16px);
+    left: 38%;
+}
+
+.enter_username{
+    color: aliceblue;
+    position: absolute;
+    top: 38%;
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.enter_password{
+    color: aliceblue;
+    position: absolute;
+    top: 48%;
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.switch_login{
+    color: aliceblue;
+    position: absolute;
+    top: 68%;
+    left: 39%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+.change_username{
+    color: aliceblue;
+    position: absolute;
+    top: 57%;
+    font-size: clamp(4px, 1vw, 16px);
+    left: 38%;
+}
+
+.Welcome{
+    color: aliceblue;
+    position: absolute;
+    top: 18%;
+    font-size: clamp(4px, 1vw, 16px);
+    left: 37%;
+    font-size: clamp(4px, 4vw, 50px);
+}
+
+.Login{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6vh;
+    width: 6vw;
+    background-color: #9C7B5B;
+    top: 74%;
+    left: 47%;
+    border:none;
+}
+
+.login_link{
+    color: aliceblue;
+}
+
+
+.changeusername{
+    display: flex;
+    position: absolute;
+    top: 63%;
+    background-color: #9C7B5B;
+    margin: none;
+    border: none;
+    width: 25vw;
+    height: 5vh;
+    left: 38%;
+    border-radius: 15px;
+    align-items: center;
+    padding: 5px 5px;
+}
+
+.changeusernameinput{
+    background-color: transparent;
+    border: none;
+    width: 25vw;
+    height: 4vh;
+    margin: none;
+    border-radius: 15px;
+    outline: none;
+}
+.changeusernameinput::placeholder{
+    color: #E3E3E3;
+}
+body{
+    background-color: #282e2d;
+}
+
+
+.LogoU{
+    height: 191px;
+    width: 191px;
+    border-radius: 15px;
+    background-color: transparent;
+    position: absolute;
+    display: flex;
+    top: 0%;
+    left: 45%;
+}
+
+.LogoImage{
+    object-fit: fill;
+    border-radius: 15px;
+}

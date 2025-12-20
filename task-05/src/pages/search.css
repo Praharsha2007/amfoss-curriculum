@@ -1,0 +1,10 @@
+.Suggestions{
+    display: flex;
+    width: 50vw;
+    height: 70vh;
+    border-radius: 15px;
+    background-color: #9C6835;
+    border: 0.5px double aliceblue;
+    gap: 10px;
+    flex-direction: row;
+}

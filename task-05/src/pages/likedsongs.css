@@ -1,0 +1,17 @@
+.NArrangement{
+    display: flex;
+    flex-direction: column;
+}
+.NlaylistTitle{
+    position: absolute;
+    top: 15%;
+    left: 1%;
+}
+.NControls{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    position: absolute;
+    right: 10%;
+    top: 18%;
+}

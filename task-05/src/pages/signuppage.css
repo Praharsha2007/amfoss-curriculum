@@ -1,0 +1,189 @@
+body{
+    background-color: #282e2d;
+    font-family: sans-serif;
+    position: relative;
+}
+
+.email{
+    display: flex;
+    position: absolute;
+    top: 33%;
+    background-color: #9C7B5B;
+    border: none;
+    width: clamp(26px, 25vw, 420px);
+    height: clamp(22px, 5vh, 56px);
+    left: 38%;
+    align-items: center;
+    padding: clamp(4px, 0.8vw, 8px);
+    border-radius: clamp(10px, 1.5vw, 15px);
+}
+
+.emailinput{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: clamp(10px, 1.5vw, 15px);
+    outline: none;
+    font-size: clamp(14px, 1vw, 16px);
+}
+
+.emailinput::placeholder{
+    color: #E3E3E3;
+}
+
+.passwordsignup{
+    display: flex;
+    position: absolute;
+    top: 53%;
+    background-color: #9C7B5B;
+    border: none;
+    width: clamp(26px, 25vw, 420px);
+    height: clamp(22px, 5vh, 56px);
+    left: 38%;
+    border-radius: clamp(10px, 1.5vw, 15px);
+    align-items: center;
+    padding: clamp(4px, 0.8vw, 8px);
+}
+
+.passwordinput{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    border-radius: clamp(10px, 1.5vw, 15px);
+    outline: none;
+    font-size: clamp(14px, 1vw, 16px);
+}
+
+.passwordinput::placeholder{
+    color: #E3E3E3;
+}
+
+.usernamesignup{
+    display: flex;
+    position: absolute;
+    top: 43%;
+    background-color: #9C7B5B;
+    border: none;
+    width: clamp(26px, 25vw, 420px);
+    height: clamp(22px, 5vh, 56px);
+    left: 38%;
+    align-items: center;
+    border-radius: clamp(10px, 1.5vw, 15px);
+    padding: clamp(4px, 0.8vw, 8px);
+}
+
+.usernameinput{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: clamp(14px, 1vw, 16px);
+}
+
+.usernameinput::placeholder{
+    color: #E3E3E3;
+}
+
+.submit1{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(20px, 6vh, 58px);
+    width: clamp(60px, 6vw, 180px);
+    background-color: #9C7B5B;
+    top: 61%;
+    left: 47%;
+    border:none;
+    color: aliceblue;
+    overflow: hidden;
+    font-size: clamp(4px, 1vw, 16px);
+}
+.Login{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(20px, 6vh, 58px);
+    width: clamp(60px, 6vw, 180px);
+    background-color: #9C7B5B;
+    top: 74%;
+    left: 47%;
+    border:none;
+    color: aliceblue;
+    font-size: clamp(4px, 1vw, 16px);
+    overflow: hidden;
+}
+
+.enter_email{
+    color: aliceblue;
+    position: absolute;
+    top: 27%;
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.enter_username{
+    color: aliceblue;
+    position: absolute;
+    top: 37%;
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+    
+}
+
+.enter_password{
+    color: aliceblue;
+    position: absolute;
+    top: 44%;
+    left: 38%;
+    font-size: clamp(4px, 1vw, 16px);
+}
+
+.Welcome1{
+    color: aliceblue;
+    position: absolute;
+    top: 16%;
+    left: 43.5%;
+    font-size: clamp(2px, 4vw, 50px);
+}
+
+
+.login_link{
+    color: aliceblue;
+}
+
+.ExtraLine{
+    position: absolute;
+    top: 82%;
+    left: 38%;
+}
+
+.google_link{
+    color: aliceblue;
+    position: absolute;
+    top: 81%;
+    left: 46.5%;
+    font-size: clamp(4px, 1vw, 16px);
+    height: clamp(10px, 6vh, 58px);
+    width: clamp(10px, 6vw, 180px);
+}
+
+.Google_Button{
+    position: absolute;
+    top: 86.5%;
+    left: 48.25%;
+    height: clamp(10px, 6vh, 58px);
+    width: clamp(10px, 6vw, 180px);
+}
+
+.Change{
+    color: aliceblue;
+    position: absolute;
+    top: 68%;
+    left: 43.25%;
+    font-size: clamp(4px, 1vw, 16px);
+}
