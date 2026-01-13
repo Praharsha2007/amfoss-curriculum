@@ -69,7 +69,6 @@ function SignUp(){
 
             <Line />
 
-            {/* FIX 2: No Link here — otherwise fetch gets cancelled */}
             <button className='submit1' onClick={signUp}>
                 SIGN UP
             </button>
