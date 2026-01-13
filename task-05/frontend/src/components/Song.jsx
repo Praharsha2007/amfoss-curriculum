@@ -8,7 +8,6 @@ function Song({ song, onClick }) {
         <div className="Cover">
           <img
             src={song.cover || headphones}
-            onError={(e) => (e.target.src = headphones)}
           />
         </div>
 
