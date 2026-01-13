@@ -7,7 +7,6 @@ function PSong({ song }) {
     <div className="PlaylistSong">
       <img
         src={song.cover || "/assets/headphones.svg"}
-        onError={(e) => (e.target.src = "/assets/headphones.svg")}
       />
 
       <div>
