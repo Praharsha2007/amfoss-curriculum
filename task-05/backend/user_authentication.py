@@ -22,8 +22,6 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
         cursor.execute("PRAGMA foreign_keys=ON;")
         cursor.close()
 
-# -------------------- MODELS --------------------
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
@@ -60,16 +58,14 @@ class RecentlyPlayed(db.Model):
     audio = db.Column(db.String(400))
 
     played_at = db.Column(
-        db.DateTime,
-        default=db.func.current_timestamp()
+                db.DateTime,
+                default=db.func.current_timestamp()
     )
 
     user = db.relationship("User", backref="recently_played")
 
 with app.app_context():
     db.create_all()
-
-# -------------------- AUTH --------------------
 
 @app.route("/register", methods=["POST"])
 def register():
@@ -104,7 +100,6 @@ def login():
 
     return {"username":user.username,"user_id":user.id}, 200
 
-# -------------------- PLAYLISTS --------------------
 
 @app.route("/playlist/create", methods=["POST"])
 def create_playlist():
@@ -132,7 +127,6 @@ def get_all_playlists():
         for p in playlists
     ])
 
-
 @app.route("/playlist/<int:id>")
 def get_playlist(id):
     p = Playlist.query.get(id)
@@ -153,7 +147,6 @@ def get_playlist(id):
 
 @app.route("/playlist/addsong", methods=["POST"])
 def add_song():
-    print("🔥 ADD SONG CALLED")
     print(request.json)
 
     data = request.json
@@ -216,8 +209,6 @@ def like_song():
         liked = Playlist(name="Liked Songs", username=username)
         db.session.add(liked)
         db.session.commit()
-
-    # prevent duplicates
     exists = PlaylistSong.query.filter_by(
         playlist_id=liked.id,
         audio=song["audio"]
@@ -239,11 +230,6 @@ def like_song():
 
     return {"msg": "Liked"}, 201
 
-
-
-# -------------------- SEARCH --------------------
-
-import requests
 base_url = "https://api.audius.co/v1"
 
 
@@ -290,10 +276,9 @@ def search_songs():
 @app.route("/trending", methods=["GET"])
 def trending_songs():
     url = f"{base_url}/tracks/trending"
-
     response = requests.get(url, params={
         "limit": 20,
-        "time": "week"   # can be: day | week | month | year | allTime
+        "time": "week" 
     })
 
     data = response.json()["data"]
