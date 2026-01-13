@@ -1,5 +1,5 @@
 .delete-btn{
-  position: static;    /* ← THIS is the fix */
+  position: static;  
   background: none;
   border: none;
   font-size: 24px;
