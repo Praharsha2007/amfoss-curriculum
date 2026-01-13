@@ -32,7 +32,6 @@ function Changepassword() {
         
   return (
     <>
-      {/* EMAIL */}
       <div className="email">
         <input
           type="text"
@@ -43,7 +42,6 @@ function Changepassword() {
         />
       </div>
 
-      {/* OLD PASSWORD */}
       <div className="passwordsignup">
         <input
           type="password"
@@ -54,7 +52,6 @@ function Changepassword() {
         />
       </div>
 
-      {/* USERNAME */}
       <div className="usernamesignup">
         <input
           type="text"
@@ -64,8 +61,6 @@ function Changepassword() {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-
-      {/* NEW PASSWORD */}
       <div className="changepassword">
         <input
           type="password"
@@ -76,11 +71,8 @@ function Changepassword() {
         />
       </div>
 
-
         <button className="submit" onClick={changePassword}>CONFIRM</button>
 
-
-      {/* LABELS */}
       <h3 className="enter_email">Enter Email</h3>
       <h3 className="enter_username">Enter Username</h3>
       <h3 className="enter_password">Enter Password</h3>
