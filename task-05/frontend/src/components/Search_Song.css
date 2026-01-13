@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1; /* 🔑 pushes actions to the right */
+  flex: 1;
 }
 
 .STitle {
@@ -80,5 +80,5 @@
 .SongActions img {
   width: 24px;
   height: 24px;
-  pointer-events: none;   /* clicks go to button */
+  pointer-events: none;  
 }
