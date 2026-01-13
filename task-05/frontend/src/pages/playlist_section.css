@@ -3,9 +3,9 @@
     flex-direction: column;
 }
 .PlaylistTitle {
-  position: fixed;      /* stay under TopMenu */
-  top: 80px;            /* just below TopMenu */
-  left: 40px;           /* nice left margin */
+  position: fixed;      
+  top: 80px;      
+  left: 40px;          
   color: white;
   font-size: 26px;
   font-weight: 600;
