@@ -12,26 +12,19 @@ function TopMenu() {
   return (
     <div className="TopBar">
 
-      {/* LEFT */}
       <div className="TopLeft">
         <Link to="/Dashboard">
           <img src={melofi} className="Melofi_logo" />
         </Link>
       </div>
-
-      {/* CENTER */}
       <div className="TopCenter">
         <Link to="/SearchPage">
           <img src={search} className="TopIcon" />
         </Link>
       </div>
-
-      {/* RIGHT */}
       <div className="TopRight">
         {!hideMenu && <Menu />}
-
         <Link to="/Library" className="TopLink">
-        
         </Link>
 
         <User />
