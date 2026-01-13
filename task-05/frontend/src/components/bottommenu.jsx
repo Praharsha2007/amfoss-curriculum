@@ -8,17 +8,12 @@ import resume from "/assets/play.svg";
 
 function Bottom_Menu({ play }) {
   const audioRef = useRef(null);
-
-  // 🔊 Play when song changes
   useEffect(() => {
-    if (!audioRef.current || !play?.audio) return;
-
     audioRef.current.src = play.audio;
     audioRef.current.load();
     audioRef.current.play().catch(() => {});
   }, [play?.audio]);
 
-  // 📝 SAVE to Recently Played
   useEffect(() => {
     if (!play?.audio) return;
 
@@ -38,7 +33,7 @@ function Bottom_Menu({ play }) {
       })
     });
 
-  }, [play?.audio]);   // runs whenever a new song plays
+  }, [play?.audio]); 
 
   const likeCurrent = async () => {
     const username = localStorage.getItem("username");
