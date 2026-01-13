@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  background-color: #282e2d;
+  font-family: Verdana, sans-serif;
+}
+
+/* Main dashboard wrapper */
+.DContainer {
+  min-height: 100vh;
+  padding: 20px;
+  padding-bottom: 120px; /* space for bottom player */
+  padding-right: 240px; /* space for side menu */
+  box-sizing: border-box;
+}
+
+/* Section headings */
+.SectionTitle {
+  color: white;
+  margin: 30px 0 20px 10px;
+  font-size: 22px;
+}
+
+/* Move Recently Played a bit down */
+.SectionTitle:first-of-type {
+  margin-top: 80px;
+}
+
+/* Song grids */
+.Recently_Played,
+.Recommended_Songs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  margin-bottom: 80px;
+  justify-content: flex-start;
+}
+
+/* Extra spacing for recently played */
+.Recently_Played {
+  margin-top: 60px;
+}
+
+/* Right side menu space */
+.SideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #1e2221;
+  z-index: 10;
+}

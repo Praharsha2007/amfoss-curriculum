@@ -1,0 +1,93 @@
+.Bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 90px;
+  background: #9C7B5B;
+  display: flex;
+  padding: 0 15px;
+  z-index: 99999;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.Pause, .Rewind, .Forward, .Like, .details {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Song */
+.Image {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 5px;
+  margin-top: 15px;
+}
+
+.Image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Song {
+  margin-left: 12px;
+  font-size: 1rem;
+  color: white;
+  margin-top: 10px;
+}
+
+.Artist {
+  margin-left: 12px;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+/* Details */
+.details {
+  margin-left: auto;
+  border: 2px solid white;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.Slider {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 4px;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+/* FORCE center and spacing of playback controls */
+.Controls {
+  position: absolute !important;
+  left: 50% !important;
+  top: 24px !important;
+  transform: translateX(-50%) !important;
+  
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+/* Force buttons to behave as flex children */
+.Controls button,
+.Controls img {
+  position: static !important;
+  margin: 0 !important;
+}
+
+
+.Play{
+  background-color: #9C7B5B;
+}

@@ -1,0 +1,12 @@
+.Suggestions {
+    display: flex;
+    flex-direction: column;  
+    padding: 20px;
+
+    width: 50vw;
+    min-height: 70vh;
+    background-color: #9C6835;
+    border-radius: 15px;
+
+    overflow-y: auto;
+}

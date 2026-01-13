@@ -1,0 +1,8 @@
+.PlaylistHeader {
+  margin-top: 90px;        /* pushes below TopMenu */
+  margin-left: 40px;
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  text-align: left;
+}

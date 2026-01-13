@@ -1,0 +1,44 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 220px;
+  width: 200px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.SongCard {
+  height: 220px;
+  width: 200px;
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Cover img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  background-color: #1e2221;
+  border-radius: 8px;
+}
+
+/* Song title below image */
+.SongTitle {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  width: 180px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

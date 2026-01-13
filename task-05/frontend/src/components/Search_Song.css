@@ -1,0 +1,84 @@
+.SearchSong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1.5px solid #FFFF;
+  background: #9C6835;
+}
+
+.AlbumCover {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.SongInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1; /* 🔑 pushes actions to the right */
+}
+
+.STitle {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+}
+
+.SArtist {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.SongActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  z-index: 1;
+}
+.SongActions,
+.SongActions * {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 10;
+}
+.SearchSong {
+  position: relative;
+}
+
+.SongActions {
+  position: relative;
+  z-index: 9999;
+}
+
+.SongActions button {
+  pointer-events: auto;
+  z-index: 9999;
+}
+.SongActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  z-index: 10;
+}
+
+.SongActions button {
+  all: unset;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SongActions img {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;   /* clicks go to button */
+}

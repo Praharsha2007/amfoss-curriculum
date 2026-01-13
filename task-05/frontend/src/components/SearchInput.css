@@ -1,0 +1,43 @@
+.SearchBar {
+    background-color: #9C6835;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border: 1px double aliceblue;
+    padding: 10px 15px;
+    border-radius: 15px;
+    width: 25vw;
+    height: 7vh;
+    top: 9px;
+    left: 38%;
+}
+
+.logo {
+    background-color: #9C6835;
+    border-radius: 50%;
+    height: 4vh;
+    width: 2vw; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* ✅ KEY FIX */
+}
+
+.logo img {
+    height: 4vh;
+    width: 2vw;
+}
+
+.searchInput {
+    flex: 1;                 /* ✅ KEY FIX */
+    height: 100%;
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.searchInput::placeholder {
+    color: #E3E3E3;
+}

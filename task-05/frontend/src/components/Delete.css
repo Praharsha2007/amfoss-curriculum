@@ -1,0 +1,8 @@
+.delete-btn{
+  position: static;    /* ← THIS is the fix */
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}

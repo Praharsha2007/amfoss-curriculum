@@ -1,0 +1,22 @@
+.PArrangement{
+    display: flex;
+    flex-direction: column;
+}
+.PlaylistTitle {
+  position: fixed;      /* stay under TopMenu */
+  top: 80px;            /* just below TopMenu */
+  left: 40px;           /* nice left margin */
+  color: white;
+  font-size: 26px;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.PControls{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    right: 10%;
+    position: absolute;
+    top: 18%;
+}
