@@ -10,13 +10,10 @@ function LikedSongs() {
 
   useEffect(() => {
     const loadLiked = async () => {
-      // Step 1: get liked playlist id
       const res1 = await fetch(
         `http://127.0.0.1:5000/playlist/liked/${username}`
       );
       const data1 = await res1.json();
-
-      // Step 2: get songs inside that playlist
       const res2 = await fetch(
         `http://127.0.0.1:5000/playlist/${data1.id}`
       );
