@@ -7,18 +7,16 @@
   background: #9C7B5B;
   display: flex;
   padding: 0 15px;
-  z-index: 99999;
+  z-index: 9;
   box-sizing: border-box;
 }
 
-/* Buttons */
 .Pause, .Rewind, .Forward, .Like, .details {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* Song */
 .Image {
   width: 55px;
   height: 55px;
@@ -47,7 +45,6 @@
   color: #ddd;
 }
 
-/* Details */
 .details {
   margin-left: auto;
   border: 2px solid white;
@@ -67,26 +64,23 @@
   border-radius: 4px;
 }
 
-/* FORCE center and spacing of playback controls */
 .Controls {
-  position: absolute !important;
-  left: 50% !important;
-  top: 24px !important;
-  transform: translateX(-50%) !important;
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
   
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  gap: 20px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-/* Force buttons to behave as flex children */
 .Controls button,
 .Controls img {
-  position: static !important;
-  margin: 0 !important;
+  position: static;
+  margin: 0;
 }
-
 
 .Play{
   background-color: #9C7B5B;
