@@ -28,7 +28,6 @@
   border-radius: 8px;
 }
 
-/* Song title below image */
 .SongTitle {
   position: absolute;
   bottom: -28px;
@@ -40,5 +39,4 @@
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
