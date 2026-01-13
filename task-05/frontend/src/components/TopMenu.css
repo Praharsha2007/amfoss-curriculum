@@ -83,12 +83,10 @@ button {
   cursor: pointer;
 }
 
-/* Remove ugly focus ring WITHOUT breaking clicks */
 button:focus {
   outline: none;
 }
 
-/* Remove the active box chrome */
 button:focus-visible {
   outline: none;
   box-shadow: none;
