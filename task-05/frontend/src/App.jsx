@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
-
 import TopMenu from "./components/TopMenu.jsx";
 import Bottom_Menu from "./components/bottommenu.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
@@ -61,7 +60,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState({
     cover: "",
     track_name: "Select a song",
-    artist_name: "",
+    artist_name: "--",
     audio: "",
   });
 
