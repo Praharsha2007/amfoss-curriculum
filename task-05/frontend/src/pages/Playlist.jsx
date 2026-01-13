@@ -13,7 +13,6 @@ function Playlist() {
       setPlaylist(data);
       setSongs(data.songs);
 
-      // Tell Add button which playlist is open
       localStorage.setItem("current_playlist_id", id);
     };
 
@@ -35,7 +34,6 @@ function Playlist() {
     e.target.src = "/assets/headphones.svg";
   }}
 />
-
           <div>
             <p>{song.title}</p>
             <p>{song.artist}</p>
