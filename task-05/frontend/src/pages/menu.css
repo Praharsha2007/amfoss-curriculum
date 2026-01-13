@@ -1,22 +1,18 @@
-/* Page background already handled globally */
 
-/* Main library page wrapper */
 .LibraryPage {
-  padding-top: 90px;   /* below top menu */
+  padding-top: 90px; 
   padding-left: 40px;
   padding-right: 40px;
   box-sizing: border-box;
 }
 
-/* Page title */
 .PlaylistTitle {
   color: white;
   font-size: 26px;
-  margin: 0 0 20px 0;   /* spacing below title */
+  margin: 0 0 20px 0;  
   text-align: left;
 }
 
-/* Grid that holds playlist cards */
 .AlbumsGrid {
   display: flex;
   flex-wrap: wrap;
@@ -25,7 +21,6 @@
   align-items: flex-start;
 }
 
-/* Each playlist card */
 .AlbumCard {
   width: 180px;
   background: #9C7B5B;
@@ -35,7 +30,6 @@
   box-sizing: border-box;
 }
 
-/* Album cover box */
 .AlbumCover {
   width: 100%;
   height: 120px;
@@ -47,14 +41,12 @@
   margin-bottom: 10px;
 }
 
-/* Headphones icon */
 .AlbumCover img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
 
-/* Playlist name */
 .AlbumCard p {
   color: white;
   font-size: 16px;
