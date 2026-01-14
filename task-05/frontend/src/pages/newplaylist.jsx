@@ -23,6 +23,9 @@ function NPlaylist(){
 
         const data = await response.json()
         console.log(data)
+        if (data.msg == "done"){
+            alert("Created the playlist!")
+        }
     }
 
     return(

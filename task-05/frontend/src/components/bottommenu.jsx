@@ -8,19 +8,23 @@ import resume from "/assets/play.svg";
 
 function Bottom_Menu({ play }) {
   const audioRef = useRef(null);
+
   useEffect(() => {
+    if (!audioRef.current || !play?.audio) return;
+
     audioRef.current.src = play.audio;
     audioRef.current.load();
     audioRef.current.play().catch(() => {});
   }, [play?.audio]);
 
   useEffect(() => {
+  async function saveRecent() {
     if (!play?.audio) return;
 
     const userId = localStorage.getItem("user_id");
     if (!userId) return;
 
-    fetch("http://127.0.0.1:5000/recently-played", {
+    const response = await fetch("http://127.0.0.1:5000/recently-played", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -33,20 +37,41 @@ function Bottom_Menu({ play }) {
       })
     });
 
-  }, [play?.audio]); 
+    if (!response.ok) {
+      console.log("Failed to save recently played");
+    }
+  }
+
+  saveRecent();
+}, [play?.audio]);
+
 
   const likeCurrent = async () => {
     const username = localStorage.getItem("username");
     if (!username || !play?.audio) return;
 
-    await fetch("http://127.0.0.1:5000/playlist/like", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username,
-        song: play
-      })
-    });
+    try {
+      const response = await fetch("http://127.0.0.1:5000/playlist/like", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username,
+          song: play
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.msg === "Liked") {
+        alert("Song added to Liked Songs!");
+      } 
+      else if (data.msg === "Already liked") {
+        alert("This song is already in your Liked Songs.");
+      }
+
+    } catch (err) {
+      alert("Server error. Try again.");
+    }
   };
 
   return (

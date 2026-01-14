@@ -37,7 +37,7 @@ function Dashboard({ setCurrentSong }) {
         <h2 className="SectionTitle">Recently Played</h2>
 
         <div className="Recently_Played">
-          {recent.length === 0 && <p style={{ color: "white" }}>No songs yet</p>}
+
 
           {recent.map(song => (
             <Song

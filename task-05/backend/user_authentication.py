@@ -42,6 +42,7 @@ class PlaylistSong(db.Model):
     cover = db.Column(db.String(300))
 
     playlist = db.relationship("Playlist", backref="songs")
+    
 class RecentlyPlayed(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
@@ -82,13 +83,6 @@ def register():
     db.session.commit()
 
     return {"msg":"ok","username":user.username,"user_id":user.id}, 201
-@app.route("/debug/songs")
-def debug():
-    songs = PlaylistSong.query.all()
-    return jsonify([
-        {"id": s.id, "playlist_id": s.playlist_id, "title": s.title}
-        for s in songs
-    ])
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -112,7 +106,8 @@ def create_playlist():
     db.session.add(playlist)
     db.session.commit()
 
-    return {"id": playlist.id}, 201
+    return {"id": playlist.id, "msg": "done"}, 201
+
 @app.route("/playlist/all", methods=["GET"])
 def get_all_playlists():
     username = request.args.get("username")
@@ -121,29 +116,29 @@ def get_all_playlists():
         return jsonify([])
 
     playlists = Playlist.query.filter_by(username=username).all()
-
-    return jsonify([
-        {"id": p.id, "name": p.name}
-        for p in playlists
-    ])
+    for p in playlists:
+        return jsonify([
+            {"id": p.id, "name": p.name}
+            
+        ])
 
 @app.route("/playlist/<int:id>")
 def get_playlist(id):
     p = Playlist.query.get(id)
-
-    return jsonify({
-        "id": p.id,
-        "name": p.name,
-        "songs": [
-            {
-                "id": s.id,
-                "title": s.title,
-                "artist": s.artist,
-                "cover": s.cover,
-                "audio": s.audio
-            } for s in p.songs
-        ]
-    })
+    for s in p.songs:
+        return jsonify({
+            "id": p.id,
+            "name": p.name,
+            "songs": [
+                {
+                    "id": s.id,
+                    "title": s.title,
+                    "artist": s.artist,
+                    "cover": s.cover,
+                    "audio": s.audio
+                } 
+            ]
+        })
 
 @app.route("/playlist/addsong", methods=["POST"])
 def add_song():
@@ -164,8 +159,6 @@ def add_song():
 
     return {"msg": "added"}, 201
 
-
-    return {"msg":"added"}, 201
 @app.route("/playlist/removesong", methods=["POST"])
 def remove_song():
     data = request.json
@@ -295,6 +288,7 @@ def trending_songs():
         })
 
     return jsonify(result)
+
 @app.route("/recently-played", methods=["POST"])
 def add_recently_played():
     data = request.json
@@ -312,6 +306,7 @@ def add_recently_played():
     db.session.commit()
 
     return {"msg": "saved"}, 201
+
 @app.route("/recently-played/<int:user_id>")
 def get_recently_played(user_id):
     songs = (
@@ -321,17 +316,17 @@ def get_recently_played(user_id):
         .limit(20)
         .all()
     )
-
-    return jsonify([
-        {
-            "id": s.id,
-            "track_name": s.title,
-            "artist_name": s.artist,
-            "cover": s.cover,
-            "audio": s.audio
-        }
-        for s in songs
-    ])
+    for s in songs:
+        return jsonify([
+            {
+                "id": s.id,
+                "track_name": s.title,
+                "artist_name": s.artist,
+                "cover": s.cover,
+                "audio": s.audio
+            }
+            
+        ])
 
 
 if __name__ == "__main__":
