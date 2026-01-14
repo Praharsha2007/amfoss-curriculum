@@ -2,7 +2,6 @@ import './signuppage.css'
 import Line from '/src/components/line.jsx'
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '/assets/logo.png'
-import Google from '/src/components/google.jsx'
 import { useState } from 'react';
 
 function SignUp(){

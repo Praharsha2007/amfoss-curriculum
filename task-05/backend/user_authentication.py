@@ -116,29 +116,36 @@ def get_all_playlists():
         return jsonify([])
 
     playlists = Playlist.query.filter_by(username=username).all()
+
+    result = []
     for p in playlists:
-        return jsonify([
-            {"id": p.id, "name": p.name}
-            
-        ])
+        result.append({
+            "id": p.id,
+            "name": p.name
+        })
+
+    return jsonify(result)
+
 
 @app.route("/playlist/<int:id>")
 def get_playlist(id):
     p = Playlist.query.get(id)
+
+    songs_list = []
     for s in p.songs:
-        return jsonify({
-            "id": p.id,
-            "name": p.name,
-            "songs": [
-                {
-                    "id": s.id,
-                    "title": s.title,
-                    "artist": s.artist,
-                    "cover": s.cover,
-                    "audio": s.audio
-                } 
-            ]
+        songs_list.append({
+            "id": s.id,
+            "title": s.title,
+            "artist": s.artist,
+            "cover": s.cover,
+            "audio": s.audio
         })
+
+    return jsonify({
+        "id": p.id,
+        "name": p.name,
+        "songs": songs_list
+    })
 
 @app.route("/playlist/addsong", methods=["POST"])
 def add_song():
@@ -316,17 +323,19 @@ def get_recently_played(user_id):
         .limit(20)
         .all()
     )
+
+    result = []
     for s in songs:
-        return jsonify([
-            {
-                "id": s.id,
-                "track_name": s.title,
-                "artist_name": s.artist,
-                "cover": s.cover,
-                "audio": s.audio
-            }
-            
-        ])
+        result.append({
+            "id": s.id,
+            "track_name": s.title,
+            "artist_name": s.artist,
+            "cover": s.cover,
+            "audio": s.audio
+        })
+
+    return jsonify(result)
+
 
 
 if __name__ == "__main__":
