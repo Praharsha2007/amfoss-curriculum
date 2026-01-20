@@ -5,7 +5,7 @@ import rewind from "/assets/rewind.svg";
 import forward from "/assets/forward.svg";
 import like from "/assets/like.svg";
 import resume from "/assets/play.svg";
-
+import { Link } from "react-router-dom";
 function Bottom_Menu({ play }) {
   const audioRef = useRef(null);
 
@@ -109,6 +109,11 @@ function Bottom_Menu({ play }) {
         <button onClick={likeCurrent}>
           <img src={like} />
         </button>
+        <Link to="/Details">
+        <button className="details">
+          DETAILS
+        </button>
+        </Link>
       </div>
     </div>
   );

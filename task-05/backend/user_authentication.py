@@ -6,6 +6,7 @@ import requests
 from sqlalchemy import event
 from sqlalchemy.engine import Engine
 import sqlite3
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -57,11 +58,7 @@ class RecentlyPlayed(db.Model):
     artist = db.Column(db.String(200))
     cover = db.Column(db.String(300))
     audio = db.Column(db.String(400))
-
-    played_at = db.Column(
-                db.DateTime,
-                default=db.func.current_timestamp()
-    )
+    played_at = db.Column(db.DateTime, default=datetime.utcnow)  
 
     user = db.relationship("User", backref="recently_played")
 
@@ -93,6 +90,34 @@ def login():
         return {"msg":"Invalid"}, 401
 
     return {"username":user.username,"user_id":user.id}, 200
+
+@app.route("/changepassword", methods=["POST"])
+def changepassword():
+    data = request.json
+    user = User.query.filter_by(username=data["username"]).first()
+    if not user:
+        return {"msg":"Invalid"}, 401
+    new_password = bcrypt.generate_password_hash(data["new_pw"]).decode("utf-8")
+    user.password = new_password
+    db.session.commit()
+    return {"msg": "changed password"}, 200
+
+@app.route("/changeusername", methods=["POST"])
+def changeusername():
+    data = request.json
+    username = data.get("username")
+    new_us = data.get("new_us")
+    if not username or not new_us:
+        return {"msg": "Missing fields"}, 400
+
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return {"msg":"Invalid"}, 401
+
+    user.username = new_us
+    db.session.commit()
+    return {"msg": "changed username"}, 200
+
 
 
 @app.route("/playlist/create", methods=["POST"])
@@ -276,25 +301,41 @@ def search_songs():
 @app.route("/trending", methods=["GET"])
 def trending_songs():
     url = f"{base_url}/tracks/trending"
-    response = requests.get(url, params={
-        "limit": 20,
-        "time": "week" 
-    })
 
-    data = response.json()["data"]
+    try:
+        response = requests.get(url, params={
+            "limit": 20,
+            "time": "week",
+            "app_name": "melofi"
+        }, timeout=5)
+    except:
+        return jsonify([])
+
+    if response.status_code != 200:
+        return jsonify([])
+
+    data = response.json()
+    tracks = data.get("data", [])
 
     result = []
 
-    for x in data:
+    for x in tracks:
+        cover = None
+        artwork = x.get("artwork")
+        if artwork and isinstance(artwork, dict):
+            cover = artwork.get("150x150")
+
         result.append({
             "id": x["id"],
             "track_name": x["title"],
             "artist_name": x["user"]["name"],
-            "audio": f"{base_url}/tracks/{x['id']}/stream",
-            "cover": x.get("artwork", {}).get("150x150"),
+            "audio": f"{base_url}/tracks/{x['id']}/stream?app_name=melofi",
+            "cover": cover,
         })
 
     return jsonify(result)
+
+
 
 @app.route("/recently-played", methods=["POST"])
 def add_recently_played():

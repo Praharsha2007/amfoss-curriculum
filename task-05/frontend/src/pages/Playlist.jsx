@@ -29,10 +29,10 @@ function Playlist() {
       {songs.map(song => (
         <div key={song.id} className="song_row">
           <img
-  src={song.cover || "/assets/headphones.svg"}
-  onError={(e) => {
-    e.target.src = "/assets/headphones.svg";
-  }}
+            src={song.cover || "/assets/headphones.svg"}
+            onError={(e) => {
+            e.target.src = "/assets/headphones.svg";
+          }}
 />
           <div>
             <p>{song.title}</p>

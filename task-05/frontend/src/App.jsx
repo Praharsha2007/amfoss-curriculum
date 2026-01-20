@@ -26,6 +26,7 @@ function Layout({ currentSong, setCurrentSong }) {
   "/Settings",
   "/ChangePassword",
   "/ChangeUsername",
+  "/Details"
 ];
 
 const hideTop = hideTopRoutes.includes(location.pathname);

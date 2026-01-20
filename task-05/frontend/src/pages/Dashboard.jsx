@@ -19,14 +19,16 @@ function Dashboard({ setCurrentSong }) {
         setRecent(recentData);
 
         const r2 = await fetch("http://127.0.0.1:5000/trending");
-        const recData = await r2.json();
-        setRecommended(recData);
+        const recommendedData = await r2.json();
+        console.log("TRENDING:", recommendedData);
+
+        setRecommended(recommendedData);
       } catch (err) {
         console.error("Dashboard load failed", err);
       }
     }
-
     load();
+    
   }, [userId]);
 
   return (
