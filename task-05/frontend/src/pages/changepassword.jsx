@@ -4,6 +4,9 @@ import Logo from "/assets/logo.png";
 import { useState } from "react";
 
 function Changepassword() {
+    if (old_pw != new_pw){
+      alert("The passwords do not match.")
+    }
     const [username, setUsername] = useState("")
     const [old_pw, setPassword] = useState("")
     const [email, setEmail] = useState("")
