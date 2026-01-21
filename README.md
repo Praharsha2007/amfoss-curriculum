@@ -10,3 +10,4 @@ My statistics is as shown :
 | [Task-03](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/task-03)
 | [Task-04](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/task-04)
 | [Task-05](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/task-05)
+| [Task-07](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/task-07)
