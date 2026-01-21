@@ -31,11 +31,4 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    TextField(
-        state = rememberTextFieldState(initialText = "Hello"),
-        label = { Text("Label") },
-        modifier = modifier,
-    )
-}
+
