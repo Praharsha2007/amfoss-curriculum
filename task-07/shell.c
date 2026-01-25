@@ -13,7 +13,7 @@ pid_t store_bg[max_pid];
 int pid_count = 0;
 pid_t fg_pid = -1;
 
-void handle_sigint(int sig) {
+void handle_ctrlC(int sig) {
     printf("\nBackground processes:\n");
     for (int i = 0; i < pid_count; i++) {
         printf("PID: %d\n", store_bg[i]);
@@ -22,7 +22,7 @@ void handle_sigint(int sig) {
     fflush(stdout);
 }
 
-void handle_sigtstp(int sig) {
+void handle_ctrlZ(int sig) {
     if (fg_pid > 0) {
         kill(fg_pid, SIGTSTP);
         printf("\nForeground process suspended\n");
@@ -36,8 +36,8 @@ int main(){
     char input[max_input_size];
     char *argv[max_args];
 
-    signal(SIGINT, handle_sigint);
-    signal(SIGTSTP, handle_sigtstp);
+    signal(SIGINT, handle_ctrlC);
+    signal(SIGTSTP, handle_ctrlZ);
 
 
     while (1){
