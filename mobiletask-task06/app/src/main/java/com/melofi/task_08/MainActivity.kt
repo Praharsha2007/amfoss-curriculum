@@ -80,12 +80,10 @@ class MainActivity : ComponentActivity() {
                             PlayerScreen(navController)
                         }
 
-                        // SEARCH SCREEN
                         composable(Destination.SEARCH.route) {
                             Search(navController)
                         }
 
-                        // PLAYLISTS SCREEN
                         composable(Destination.PLAYLISTS.route) {
                             Playlists(navController)
                         }
