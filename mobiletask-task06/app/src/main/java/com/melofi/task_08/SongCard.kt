@@ -16,8 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-@Composable //To denote a UI function
-fun SongCard( //To define a reusable UI component
+@Composable 
+fun SongCard(
     songTitle: String,
     artist: String,
     albumArt: Int,
@@ -30,7 +30,7 @@ fun SongCard( //To define a reusable UI component
             .padding(6.dp)
             .clickable { onPlayClick() },
         shape = RoundedCornerShape(20.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp) //Adds shadow
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(
             modifier = Modifier
@@ -46,7 +46,7 @@ fun SongCard( //To define a reusable UI component
                     .clip(RoundedCornerShape(16.dp)),
                     contentScale = ContentScale.Crop
             )
-            Spacer(modifier = Modifier.height(10.dp)) //Creates an invisible box that brings down everything by 10 dp since that is the height.
+            Spacer(modifier = Modifier.height(10.dp)) 
             Text(
                 text = songTitle,
                 fontSize = 15.sp,
