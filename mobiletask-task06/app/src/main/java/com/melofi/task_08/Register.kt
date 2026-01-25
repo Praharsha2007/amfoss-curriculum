@@ -23,7 +23,6 @@ import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 
-/* ---------------- REGISTER SCREEN ---------------- */
 
 @Composable
 fun Register(navController: NavHostController) {
@@ -44,7 +43,6 @@ fun Register(navController: NavHostController) {
     }
 }
 
-/* ---------------- UI PARTS ---------------- */
 
 @Composable
 fun Register_Title() {
@@ -168,9 +166,6 @@ fun T() {
         )
     }
 }
-
-/* ---------------- BUTTONS WITH NAVIGATION ---------------- */
-
 @Composable
 fun Registering(navController: NavHostController) {
 
