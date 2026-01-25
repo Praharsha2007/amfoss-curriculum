@@ -53,7 +53,7 @@ fun PlayerScreen(navController: NavHostController) {
     ) {
 
         Text(
-            text = "← Back",
+            text = "←",
             color = Color.White,
             modifier = Modifier
                 .align(Alignment.Start)
@@ -102,7 +102,6 @@ fun PlayerScreen(navController: NavHostController) {
             modifier = Modifier.fillMaxWidth()
         ) {
 
-            // Previous button
             IconButton(onClick = { }) {
                 Icon(
                     imageVector = Icons.Filled.SkipPrevious,
@@ -112,7 +111,6 @@ fun PlayerScreen(navController: NavHostController) {
                 )
             }
 
-            // Play button (center big)
             Box(
                 modifier = Modifier
                     .size(80.dp)
@@ -129,7 +127,6 @@ fun PlayerScreen(navController: NavHostController) {
                 }
             }
 
-            // Next button
             IconButton(onClick = { }) {
                 Icon(
                     imageVector = Icons.Filled.SkipNext,
