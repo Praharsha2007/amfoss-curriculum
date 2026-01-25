@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.navigation.NavHostController
 
 
-/* ---------------- DATA ---------------- */
 
 data class Song(
     val title: String,
@@ -33,7 +32,6 @@ data class Playlist(
     val songs: List<Song>
 )
 
-/* ---------------- PLAYLIST SCREEN ---------------- */
 @Composable
 fun Playlists(navController: NavHostController) {
 
@@ -65,14 +63,12 @@ fun Playlists(navController: NavHostController) {
             PlaylistSongsScreen(
                 playlist = selectedPlaylist!!,
                 onBack = { selectedPlaylist = null },
-                navController = navController        // PASS NAV HERE
+                navController = navController       
             )
         }
     }
 }
 
-
-/* ---------------- PLAYLIST UI ---------------- */
 
 @Composable
 fun Playlist_Cards(
@@ -113,8 +109,6 @@ fun Playlist_Cards(
         }
     }
 }
-
-/* ---------------- PLAYLIST SONGS SCREEN ---------------- */
 @Composable
 fun PlaylistSongsScreen(
     playlist: Playlist,
@@ -127,7 +121,6 @@ fun PlaylistSongsScreen(
             .background(Color.Black)
     ) {
 
-        // Top bar
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(12.dp)
@@ -150,7 +143,6 @@ fun PlaylistSongsScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Songs list
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.padding(horizontal = 12.dp)
@@ -163,7 +155,6 @@ fun PlaylistSongsScreen(
                     artist = song.artist,
                     albumArt = song.image,
                     onPlayClick = {
-                        // 🔥 OPEN PLAYER SCREEN
                         navController.navigate("player")
                     }
                 )
