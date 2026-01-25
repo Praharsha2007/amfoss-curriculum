@@ -14,7 +14,6 @@ fun BottomBar(navController: NavHostController) {
         containerColor = Color(0xFF9B7A5B),
     ) {
 
-        // Get current route (which screen is open)
         val currentRoute =
             navController.currentBackStackEntryAsState().value
                 ?.destination?.route
@@ -22,22 +21,17 @@ fun BottomBar(navController: NavHostController) {
         Destination.entries.forEach { destination ->
 
             NavigationBarItem(
-                // Highlight selected tab
                 selected = currentRoute == destination.route,
 
-                // Navigate when clicked
                 onClick = {
                     navController.navigate(destination.route) {
 
-                        // Prevent many copies of same screen
                         popUpTo(navController.graph.startDestinationId) {
                             saveState = true
                         }
 
-                        // Avoid reloading same screen
                         launchSingleTop = true
 
-                        // Restore previous state
                         restoreState = true
                     }
                 },
