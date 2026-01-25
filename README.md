@@ -12,3 +12,5 @@ My statistics is as shown :
 | [Task-05](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/task-05)
 | [Task-06](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/mobiletask-task06)
 | [Task-07](https://github.com/Praharsha2007/amfoss-curriculum/tree/main/task-07)
+
+--Task - 05 comprises of both frontend and backend of web.
