@@ -19,7 +19,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
-/* ---------------- SEARCH SCREEN ---------------- */
 
 @Composable
 fun Search(navController: NavHostController) {
@@ -34,8 +33,6 @@ fun Search(navController: NavHostController) {
     }
 }
 
-/* ---------------- SEARCH BAR ---------------- */
-
 @Composable
 fun Searchbar(navController: NavHostController) {
 
@@ -48,7 +45,6 @@ fun Searchbar(navController: NavHostController) {
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        // 🔥 Back Button (NavController handles back)
         IconButton(
             onClick = {
                 navController.popBackStack()
@@ -62,7 +58,6 @@ fun Searchbar(navController: NavHostController) {
             )
         }
 
-        // Search Field
         OutlinedTextField(
             value = input,
             onValueChange = { input = it },
@@ -77,7 +72,6 @@ fun Searchbar(navController: NavHostController) {
     }
 }
 
-/* ---------------- SONG LIST ---------------- */
 
 @Composable
 fun Songs() {
@@ -97,7 +91,6 @@ fun Songs() {
     }
 }
 
-/* ---------------- SEARCH CARD ---------------- */
 
 @Composable
 fun SearchCard(
