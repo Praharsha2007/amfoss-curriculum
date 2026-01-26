@@ -73,6 +73,13 @@ int main(){
             else if (chdir(argv[1]) == -1) perror("cd");
             continue;
         }
+        if (strcmp(argv[0], "pwd") == 0) {
+        char cwd[1024];
+        if (getcwd(cwd, sizeof(cwd)) != NULL)
+            printf("%s\n", cwd);
+        else
+            perror("pwd");
+        continue;
 
         if (strcmp(argv[argc-1], "&") == 0){
             background = 1;
