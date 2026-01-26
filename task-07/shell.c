@@ -80,7 +80,7 @@ int main(){
         else
             perror("pwd");
         continue;
-
+        }
         if (strcmp(argv[argc-1], "&") == 0){
             background = 1;
             argv[--argc] = NULL;
