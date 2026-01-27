@@ -15,8 +15,24 @@ import Liked from "./pages/likedsongs.jsx";
 import New from "./pages/newplaylist.jsx";
 import SearchPage from "./pages/search.jsx";
 
-function Layout({ currentSong, setCurrentSong }) {
-  const location = useLocation();
+
+function App() {
+  const [currentSong, setCurrentSong] = useState({
+    cover: "",
+    track_name: "Select a song",
+    artist_name: "--",
+    audio: "",
+  });
+
+  return (
+    <BrowserRouter>
+      <Layout currentSong={currentSong} setCurrentSong={setCurrentSong} />
+    </BrowserRouter>
+  );
+}
+
+function Layout({ currentSong, setCurrentSong }) { //It receives currentSong which is updated by the setCurrentSong. This lets dashboard and search to update their data and bottombar to play it.
+  const location = useLocation(); //To get the current route the app is on.
 
   const hideTopRoutes = [
   "/",
@@ -29,12 +45,12 @@ function Layout({ currentSong, setCurrentSong }) {
   "/Details"
 ];
 
-const hideTop = hideTopRoutes.includes(location.pathname);
+const hideTop = hideTopRoutes.includes(location.pathname); //If the url includes the above routes then hideTop is true.
 
 
   return (
     <>
-      {!hideTop && <TopMenu />}
+      {!hideTop && <TopMenu />} 
 
       <Routes>
         <Route path="/" element={<SignUp />} />
@@ -57,19 +73,5 @@ const hideTop = hideTopRoutes.includes(location.pathname);
   );
 }
 
-function App() {
-  const [currentSong, setCurrentSong] = useState({
-    cover: "",
-    track_name: "Select a song",
-    artist_name: "--",
-    audio: "",
-  });
-
-  return (
-    <BrowserRouter>
-      <Layout currentSong={currentSong} setCurrentSong={setCurrentSong} />
-    </BrowserRouter>
-  );
-}
 
 export default App;
