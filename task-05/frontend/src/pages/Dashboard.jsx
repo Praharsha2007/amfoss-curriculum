@@ -41,11 +41,11 @@ function Dashboard({ setCurrentSong }) {
         <div className="Recently_Played">
 
 
-          {recent.map(song => (
+          {recent.map(song => ( 
             <Song
-              key={song.id}
+              key={song.id} 
               song={song}
-              onClick={() => setCurrentSong(song)}
+              onClick={() => setCurrentSong(song)} 
             />
           ))}
         </div>

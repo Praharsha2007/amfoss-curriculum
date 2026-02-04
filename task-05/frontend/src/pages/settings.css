@@ -56,7 +56,7 @@ body{
 .title{
     position: absolute;
     top: 20%;
-    left: 35%;
+    left: 40%;
     font-size: clamp(4px, 4vw, 50px);
 }
 

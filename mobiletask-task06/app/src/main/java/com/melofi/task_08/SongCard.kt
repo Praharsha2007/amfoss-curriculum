@@ -16,7 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-@Composable 
+
+@Composable
 fun SongCard(
     songTitle: String,
     artist: String,
@@ -46,7 +47,7 @@ fun SongCard(
                     .clip(RoundedCornerShape(16.dp)),
                     contentScale = ContentScale.Crop
             )
-            Spacer(modifier = Modifier.height(10.dp)) 
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = songTitle,
                 fontSize = 15.sp,

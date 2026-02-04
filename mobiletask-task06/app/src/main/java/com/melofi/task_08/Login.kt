@@ -22,6 +22,8 @@ import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 
+
+
 @Composable
 fun Login(navController: NavHostController) {
 
@@ -39,6 +41,8 @@ fun Login(navController: NavHostController) {
         Register_Button(navController)
     }
 }
+
+
 
 @Composable
 fun Title() {
@@ -141,6 +145,7 @@ fun Password_Field(){
 }
 
 
+
 @Composable
 fun Login_Button(navController: NavHostController){
 
@@ -152,7 +157,8 @@ fun Login_Button(navController: NavHostController){
     ) {
         Button(
             onClick = {
-                navController.navigate(Destination.HOME.route) {
+
+                navController.navigate("home") {
                     popUpTo("login") { inclusive = true }
                 }
             },
@@ -184,6 +190,7 @@ fun Register_Button(navController: NavHostController){
 
         Button(
             onClick = {
+
                 navController.navigate("register")
             },
             modifier = Modifier

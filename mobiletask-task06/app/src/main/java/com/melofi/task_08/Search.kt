@@ -33,6 +33,8 @@ fun Search(navController: NavHostController) {
     }
 }
 
+
+
 @Composable
 fun Searchbar(navController: NavHostController) {
 
@@ -57,6 +59,7 @@ fun Searchbar(navController: NavHostController) {
                 tint = Color.White
             )
         }
+
 
         OutlinedTextField(
             value = input,

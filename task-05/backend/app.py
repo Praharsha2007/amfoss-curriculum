@@ -16,7 +16,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///melofi.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
-@event.listens_for(Engine, "connect") #This is for creating foreign keys. A foreign key is used to establish relationship between two tables.
+@event.listens_for(Engine, "connect") 
 def set_sqlite_pragma(dbapi_connection, connection_record):
     if isinstance(dbapi_connection, sqlite3.Connection):
         cursor = dbapi_connection.cursor()
@@ -44,12 +44,12 @@ class PlaylistSong(db.Model):
 
     playlist = db.relationship("Playlist", backref="songs")
     
-class RecentlyPlayed(db.Model ): #Defines a table model. db.Model is a base class provided. This whole line creates a database model.
-    id = db.Column(db.Integer, primary_key=True) #Primary key. It uniquely identifies each row in a table.
+class RecentlyPlayed(db.Model ): 
+    id = db.Column(db.Integer, primary_key=True)
 
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey("user.id"), #Points to the id column of user table.
+        db.ForeignKey("user.id"),
         nullable=False
     ) 
 
@@ -58,39 +58,37 @@ class RecentlyPlayed(db.Model ): #Defines a table model. db.Model is a base clas
     artist = db.Column(db.String(200))
     cover = db.Column(db.String(300))
     audio = db.Column(db.String(400))
-    played_at = db.Column(db.DateTime, default=datetime.utcnow)   #Automatically sets current time when row is created. When the record of a recently played is stored, the time is saved.
+    played_at = db.Column(db.DateTime, default=datetime.utcnow)  
+    user = db.relationship("User", backref="recently_played") 
 
-    user = db.relationship("User", backref="recently_played") #ORM relationship helper. It creates a link.
+with app.app_context():
+    db.create_all() 
 
-with app.app_context(): #To temporarily activate the flask application so that flask extensions know which app and config to use.
-    db.create_all() #It creates all database tables for every model defined in thhe app, if they do not exist.
-
-@app.route("/register", methods=["POST"]) #Defines a route, api endpoint.
+@app.route("/register", methods=["POST"]) 
 def register():
-    data = request.json #Request is used to read the JSON body sent by the client.
+    data = request.json 
     password_hash = bcrypt.generate_password_hash(data["password"]).decode("utf-8")
 
-    user = User( #This creates a new User object not in the database.
+    user = User( 
         username=data["username"],
         email=data["email"],
         password=password_hash
     )
 
-    db.session.add(user) #Inserts the new user object into the database.
-    db.session.commit() #Pushes it. Finally sends INSERT SQL to database.
+    db.session.add(user) 
+    db.session.commit() 
 
-    return {"msg":"ok","username":user.username,"user_id":user.id}, 201 #Sends the http response back to the client.
+    return {"msg":"ok","username":user.username,"user_id":user.id}, 201 
 
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
-    user = User.query.filter_by(username=data["username"]).first() #User is the model class representing the user table, .query starts building a database query on the User table. Filter compares the user.username with the value user sends.
+    user = User.query.filter_by(username=data["username"]).first() 
 
     if not user or not bcrypt.check_password_hash(user.password, data["password"]):
         return {"msg":"Invalid"}, 401
 
     return {"username":user.username,"user_id":user.id}, 200
-
 @app.route("/changepassword", methods=["POST"])
 def changepassword():
     data = request.json
@@ -135,12 +133,12 @@ def create_playlist():
 
 @app.route("/playlist/all", methods=["GET"])
 def get_all_playlists():
-    username = request.args.get("username") #It reads the query parameter. It fetches the value of username.
+    username = request.args.get("username") 
 
     if not username:
         return jsonify([])
 
-    playlists = Playlist.query.filter_by(username=username).all()#It checks for all the rows where the username is same as the query. all() is used to return a list of playlist objects.
+    playlists = Playlist.query.filter_by(username=username).all()
 
     result = []
     for p in playlists:
@@ -154,8 +152,8 @@ def get_all_playlists():
 
 @app.route("/playlist/<int:id>")
 def get_playlist(id):
-    p = Playlist.query.get(id) #Only fetches the playlist with that particular id.
-
+    p = Playlist.query.get(id) 
+    
     songs_list = []
     for s in p.songs:
         songs_list.append({
@@ -265,10 +263,10 @@ def search_songs():
         return jsonify([])
 
     try:
-        res = requests.get( #Makes a http request to an external API
+        res = requests.get(
             "https://api.audius.co/v1/tracks/search",
-            params={"query": query, "limit": 10}, #Query parameters to send to audius
-            timeout=5 #Wait for 5 seconds, if api doesnt respond, raise exception.
+            params={"query": query, "limit": 10},
+            timeout=5 
         )
     except:
         return jsonify([])
@@ -276,7 +274,7 @@ def search_songs():
     if res.status_code != 200:
         return jsonify([])
 
-    tracks = res.json().get("data", []) #Parse the JSON response from Audius.
+    tracks = res.json().get("data", []) 
     result = []
 
     for x in tracks:
@@ -379,4 +377,5 @@ def get_recently_played(user_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+

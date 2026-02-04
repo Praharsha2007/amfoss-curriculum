@@ -7,6 +7,7 @@ import Side from '/src/components/sidebar.jsx'
 
 import { Link } from 'react-router-dom'
 function Settings(){
+    const username = localStorage.getItem("username")
     return(
         <>
         <Top />
@@ -26,7 +27,7 @@ function Settings(){
         </button>
         </Link>
         <h1 className='title'>
-            HEY THERE, [USERNAME]
+            HEY THERE, {username}
         </h1>
 
         

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 import '/src/components/Menu.jsx'
 function SideBar1(){
+    const username = localStorage.getItem("username")
     return(
         <>
         <div className='Sidebar'>
@@ -27,7 +28,7 @@ function SideBar1(){
                 <Add_Playlist />
             </div>
             <h1 className='Username'>
-                USERNAME
+                {username}
             </h1>  
         </div>
         

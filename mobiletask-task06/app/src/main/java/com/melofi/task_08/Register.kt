@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 
+
 @Composable
 fun Register(navController: NavHostController) {
 
@@ -42,6 +43,7 @@ fun Register(navController: NavHostController) {
         Log(navController)
     }
 }
+
 
 
 @Composable
@@ -166,6 +168,9 @@ fun T() {
         )
     }
 }
+
+
+
 @Composable
 fun Registering(navController: NavHostController) {
 
@@ -176,7 +181,7 @@ fun Registering(navController: NavHostController) {
     ) {
         Button(
             onClick = {
-                navController.navigate(Destination.HOME.route) {
+                navController.navigate("home") {
                     popUpTo("login") { inclusive = true }
                 }
             },

@@ -31,8 +31,8 @@ function App() {
   );
 }
 
-function Layout({ currentSong, setCurrentSong }) { //It receives currentSong which is updated by the setCurrentSong. This lets dashboard and search to update their data and bottombar to play it.
-  const location = useLocation(); //To get the current route the app is on.
+function Layout({ currentSong, setCurrentSong }) { 
+  const location = useLocation(); 
 
   const hideTopRoutes = [
   "/",
@@ -45,7 +45,7 @@ function Layout({ currentSong, setCurrentSong }) { //It receives currentSong whi
   "/Details"
 ];
 
-const hideTop = hideTopRoutes.includes(location.pathname); //If the url includes the above routes then hideTop is true.
+const hideTop = hideTopRoutes.includes(location.pathname); 
 
 
   return (

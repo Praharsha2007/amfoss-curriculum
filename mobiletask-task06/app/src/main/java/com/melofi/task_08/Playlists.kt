@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 
 
 
+//If data is changed and ui needs to be updated then state is used.
 data class Song(
     val title: String,
     val artist: String,
@@ -63,11 +64,12 @@ fun Playlists(navController: NavHostController) {
             PlaylistSongsScreen(
                 playlist = selectedPlaylist!!,
                 onBack = { selectedPlaylist = null },
-                navController = navController       
+                navController = navController
             )
         }
     }
 }
+
 
 
 @Composable
@@ -109,6 +111,8 @@ fun Playlist_Cards(
         }
     }
 }
+
+
 @Composable
 fun PlaylistSongsScreen(
     playlist: Playlist,
@@ -126,7 +130,7 @@ fun PlaylistSongsScreen(
             modifier = Modifier.padding(12.dp)
         ) {
             Text(
-                text = "← Back",
+                text = "← ",
                 color = Color.White,
                 modifier = Modifier.clickable { onBack() }
             )
@@ -143,17 +147,18 @@ fun PlaylistSongsScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
+
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.padding(horizontal = 12.dp)
         ) {
             items(playlist.songs.size) { index ->
-                val song = playlist.songs[index]
+                val songi = playlist.songs[index]
 
                 Playlist_SongCard(
-                    songTitle = song.title,
-                    artist = song.artist,
-                    albumArt = song.image,
+                    songTitle = songi.title,
+                    artist = songi.artist,
+                    albumArt = songi.image,
                     onPlayClick = {
                         navController.navigate("player")
                     }
