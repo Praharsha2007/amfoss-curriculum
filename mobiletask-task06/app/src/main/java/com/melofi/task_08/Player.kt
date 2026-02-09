@@ -40,9 +40,22 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-
+import coil.compose.AsyncImage
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 @Composable
-fun PlayerScreen(navController: NavHostController) {
+fun PlayerScreen(
+    navController: NavHostController,
+    title: String,
+    artist: String,
+    cover: String
+) {
+
+    val decodedTitle = URLDecoder.decode(title, StandardCharsets.UTF_8.toString())
+    val decodedArtist = URLDecoder.decode(artist, StandardCharsets.UTF_8.toString())
+    val decodedCover = URLDecoder.decode(cover, StandardCharsets.UTF_8.toString())
+
+    val imageUrl = if (decodedCover == "empty") null else decodedCover
 
     Column(
         modifier = Modifier
@@ -57,16 +70,16 @@ fun PlayerScreen(navController: NavHostController) {
             color = Color.White,
             modifier = Modifier
                 .align(Alignment.Start)
-                .clickable {
-                    navController.popBackStack()
-                }
+                .clickable { navController.popBackStack() }
         )
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        Image(
-            painter = painterResource(R.drawable.album),
+        AsyncImage(
+            model = imageUrl,
             contentDescription = "Album Art",
+            placeholder = painterResource(R.drawable.album),
+            error = painterResource(R.drawable.album),
             modifier = Modifier
                 .size(220.dp)
                 .clip(RoundedCornerShape(24.dp)),
@@ -76,7 +89,7 @@ fun PlayerScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(30.dp))
 
         Text(
-            text = "Blinding Lights",
+            text = decodedTitle,
             fontWeight = FontWeight.Bold,
             fontSize = 26.sp,
             color = Color.White,
@@ -86,57 +99,9 @@ fun PlayerScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "The Weeknd",
+            text = decodedArtist,
             fontSize = 18.sp,
             color = Color.Gray
         )
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-
-        Spacer(modifier = Modifier.height(25.dp))
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-
-            IconButton(onClick = { }) {
-                Icon(
-                    imageVector = Icons.Filled.SkipPrevious,
-                    contentDescription = "Previous",
-                    tint = Color.White,
-                    modifier = Modifier.size(36.dp)
-                )
-            }
-
-            Box(
-                modifier = Modifier
-                    .size(80.dp)
-                    .background(Color.White, shape = RoundedCornerShape(40.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Filled.PlayArrow,
-                        contentDescription = "Play",
-                        tint = Color.Black,
-                        modifier = Modifier.size(40.dp)
-                    )
-                }
-            }
-
-            IconButton(onClick = { }) {
-                Icon(
-                    imageVector = Icons.Filled.SkipNext,
-                    contentDescription = "Next",
-                    tint = Color.White,
-                    modifier = Modifier.size(36.dp)
-                )
-            }
-        }
-
-
     }
 }

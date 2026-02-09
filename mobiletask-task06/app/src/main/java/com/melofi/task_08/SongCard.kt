@@ -16,21 +16,25 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 
 @Composable
 fun SongCard(
     songTitle: String,
     artist: String,
-    albumArt: Int,
+    albumArtUrl: String?,
     onPlayClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .width(160.dp)
-            .height(140.dp)
-            .padding(6.dp)
+            .height(220.dp)
+            .padding(8.dp)
             .clickable { onPlayClick() },
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Column(
@@ -39,24 +43,29 @@ fun SongCard(
                 .padding(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                painter = painterResource(id = albumArt),
+
+            AsyncImage(
+                model = albumArtUrl,
                 contentDescription = "Album Art",
                 modifier = Modifier
-                    .size(40.dp)
-                    .clip(RoundedCornerShape(16.dp)),
-                    contentScale = ContentScale.Crop
+                    .size(120.dp)
+                    .clip(RoundedCornerShape(12.dp)),
+                contentScale = ContentScale.Crop
             )
-            Spacer(modifier = Modifier.height(10.dp))
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             Text(
                 text = songTitle,
-                fontSize = 15.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(4.dp))
+
+            Spacer(modifier = Modifier.height(6.dp))
+
             Text(
                 text = artist,
                 fontSize = 12.sp,

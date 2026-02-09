@@ -10,32 +10,32 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 fun BottomBar(navController: NavHostController) {
 
     val currentRoute =
-        navController.currentBackStackEntryAsState().value
-            ?.destination?.route
+        navController.currentBackStackEntryAsState().value //It updates the value whenever the screen changes. .value gets the current back stack entry.
+            ?.destination?.route //safely extracts destination and route. Due to ? wont crash even if null.
 
     val destinations = listOf(
         Destination.Home,
         Destination.Search,
         Destination.Playlists
-    )
+    ) //Shows a list of the screens which the bottom bar will be able to navigate between.
 
     NavigationBar(
         containerColor = Color(0xFF9B7A5B),
     ) {
 
-        destinations.forEach { destination ->
+        destinations.forEach { destination -> //Looping through each screen
 
             NavigationBarItem(
 
-                selected = currentRoute == destination.route,
+                selected = currentRoute == destination.route, //When looped, it checks if the screen is the one which is active.
 
                 onClick = {
                     navController.navigate(destination.route) {
-                        popUpTo(navController.graph.startDestinationId) {
+                        popUpTo(navController.graph.startDestinationId) { //Pops back to the start destination before navigation.
                             saveState = true
                         }
-                        launchSingleTop = true
-                        restoreState = true
+                        launchSingleTop = true //Prevents creating multiple instances of the same screen.
+                        restoreState = true //It restores the previously stored data.
                     }
                 },
 

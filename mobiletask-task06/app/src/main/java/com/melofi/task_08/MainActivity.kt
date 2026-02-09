@@ -1,4 +1,7 @@
 package com.melofi.task_08
+import com.melofi.task_08.RetrofitInstance
+import com.melofi.task_08.Song
+import androidx.compose.runtime.*
 
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -13,17 +16,33 @@ import androidx.navigation.compose.*
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
+import androidx.navigation.navArgument
+import retrofit2.Response
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 
-//navhost stores all the screens and is liek a tv while navcontroller si the remote and is used to switch screens. navcontroller keeps a back stack.
+//navhost stores all the screens and is like a tv while navcontroller si the remote and is used to switch screens. navcontroller keeps a back stack.
 class MainActivity : ComponentActivity() { // A class is a blueprint for creating objects. A class is a design and an object is the real thing created from that design.
     // : means inheritance. MainActivity inherits from Component Activity, Takes all properties and functions from another class.
     //Override means replacing a function from the parent class with my own version.
@@ -84,13 +103,30 @@ class MainActivity : ComponentActivity() { // A class is a blueprint for creatin
                                 Trending(navController)
                             }
                         }
-                        composable(route = "player"){
-                            PlayerScreen(navController)
+                        composable(
+                            route = "player/{title}/{artist}/{cover}",
+                            arguments = listOf(
+                                navArgument("title") { defaultValue = "" }, //It declares the expected argument.
+                                navArgument("artist") { defaultValue = "" },
+                                navArgument("cover") { defaultValue = "" }
+                            )
+                        ) { backStackEntry ->
+
+                            val title = backStackEntry.arguments?.getString("title") ?: "" //It reads the "title" from the navigation.
+                            val artist = backStackEntry.arguments?.getString("artist") ?: ""
+                            val cover = backStackEntry.arguments?.getString("cover") ?: ""
+
+                            PlayerScreen(
+                                navController = navController,
+                                title = title,
+                                artist = artist,
+                                cover = cover
+                            )
                         }
+
                         composable("search") {
                             Search(navController)
                         }
-
 
                         composable("playlists") {
                             Playlists(navController)
@@ -102,7 +138,7 @@ class MainActivity : ComponentActivity() { // A class is a blueprint for creatin
     }
 }
 
-@Composable //Enables function to call other composable functions within it.
+@Composable
 fun Melofi(name: String, modifier: Modifier = Modifier) { //Whenever we call this particular function we need to call it with a string parameter passed into it.
     Column( //Modifier tells UI elements how to lay out, display. In this function the line makes the modifier thing optional because it has a default value called Modifier. Without the default value, would be forced to pass a modifier every time.
         modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
@@ -122,12 +158,20 @@ fun Melofi(name: String, modifier: Modifier = Modifier) { //Whenever we call thi
             textAlign = TextAlign.Center,
             fontStyle = FontStyle.Italic,
             fontSize = 15.sp,
-            fontFamily = FontFamily.SansSerif,
+            fontFamily = FontFamily.SansSerif
         )
     }
 }
+
 @Composable
-fun RecentlyPlayed(navController: NavHostController) { //A functions is created and it needs a navigation controller object. NavHostController is the type of navigation controller.
+fun RecentlyPlayed(navController: NavHostController) {
+
+    fun navigate(title: String, artist: String) {
+        val encodedTitle = URLEncoder.encode(title, StandardCharsets.UTF_8.toString()) //Because navigation routes cannot include spaces.
+        val encodedArtist = URLEncoder.encode(artist, StandardCharsets.UTF_8.toString())
+
+        navController.navigate("player/$encodedTitle/$encodedArtist/empty")
+    }
 
     Column(
         modifier = Modifier
@@ -152,35 +196,58 @@ fun RecentlyPlayed(navController: NavHostController) { //A functions is created 
                 SongCard(
                     songTitle = "Blinding Lights",
                     artist = "The Weeknd",
-                    albumArt = R.drawable.album //R is for reesources. It is a class automatically generated by Android. Drawable is inside res folder and inside that album is a png file stored.
-                ) { navController.navigate("player")}
+                    albumArtUrl = null
+                ) {
+                    navigate("Blinding Lights", "The Weeknd") //Needs to pass two parameters for the function to work.
+                }
             }
+
             item {
                 SongCard(
                     songTitle = "Perfect",
                     artist = "Ed Sheeran",
-                    albumArt = R.drawable.album
-                ) {navController.navigate("player") }
+                    albumArtUrl = null
+                ) {
+                    navigate("Perfect", "Ed Sheeran")
+                }
             }
 
             item {
                 SongCard(
                     songTitle = "Believer",
                     artist = "Imagine Dragons",
-                    albumArt = R.drawable.album
-                ) { navController.navigate("player")}
+                    albumArtUrl = null
+                ) {
+                    navigate("Believer", "Imagine Dragons")
+                }
             }
         }
     }
 }
+
+
 @Composable
 fun Trending(navController: NavHostController) {
+
+    var songs by remember { mutableStateOf<List<Song>>(emptyList()) }
+
+    LaunchedEffect(Unit) {
+        try {
+            val response = RetrofitInstance.api.getTrending()
+            if (response.isSuccessful) {
+                songs = response.body() ?: emptyList()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 30.dp)
     ) {
+
         Text(
             text = "Trending Songs",
             fontSize = 15.sp,
@@ -194,28 +261,21 @@ fun Trending(navController: NavHostController) {
             modifier = Modifier.padding(start = 12.dp)
         ) {
 
-            item {
+            items(songs) { song ->
+
                 SongCard(
-                    songTitle = "Blinding Lights",
-                    artist = "The Weeknd",
-                    albumArt = R.drawable.album
-                ) { navController.navigate("player")}
-            }
-            item {
-                SongCard(
-                    songTitle = "Perfect",
-                    artist = "Ed Sheeran",
-                    albumArt = R.drawable.album
-                ) {navController.navigate("player") }
-            }
-            item {
-                SongCard(
-                    songTitle = "Believer",
-                    artist = "Imagine Dragons",
-                    albumArt = R.drawable.album
-                ) {navController.navigate("player") }
+                    songTitle = song.trackName,
+                    artist = song.artistName,
+                    albumArtUrl = song.cover
+                ) {
+
+                    val encodedTitle = URLEncoder.encode(song.trackName, StandardCharsets.UTF_8.toString())
+                    val encodedArtist = URLEncoder.encode(song.artistName, StandardCharsets.UTF_8.toString())
+                    val encodedCover = URLEncoder.encode(song.cover ?: "empty", StandardCharsets.UTF_8.toString())
+
+                    navController.navigate("player/$encodedTitle/$encodedArtist/$encodedCover")
+                }
             }
         }
     }
 }
-

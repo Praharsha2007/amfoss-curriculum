@@ -5,8 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,21 +14,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.navigation.NavHostController
 
 
 
 //If data is changed and ui needs to be updated then state is used.
-data class Song(
-    val title: String,
-    val artist: String,
-    val image: Int
-)
 
 data class Playlist(
     val name: String,
     val image: Int,
-    val songs: List<Song>
+
 )
 
 @Composable
@@ -40,11 +35,7 @@ fun Playlists(navController: NavHostController) {
         Playlist(
             name = "Blinding Lights",
             image = R.drawable.album,
-            songs = listOf(
-                Song("Blinding Lights", "The Weeknd", R.drawable.album),
-                Song("Save Your Tears", "The Weeknd", R.drawable.album),
-                Song("Starboy", "The Weeknd", R.drawable.album)
-            )
+
         )
     )
 
@@ -93,6 +84,15 @@ fun Playlist_Cards(
 
         Spacer(modifier = Modifier.height(20.dp))
 
+        IconButton(onClick = { println("New playlist") }) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Add",
+                tint = Color.White
+            )
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier.padding(start = 4.dp)
@@ -105,7 +105,10 @@ fun Playlist_Cards(
                     albumArt = playlist.image,
                     onPlayClick = {
                         onPlaylistClick(playlist)
-                    }
+                    },
+                    onAddClick = { println("Added to playlist") },
+                    onDeleteClick = { println("Deleted from playlist") }
+
                 )
             }
         }
@@ -147,24 +150,14 @@ fun PlaylistSongsScreen(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier.padding(horizontal = 12.dp)
         ) {
-            items(playlist.songs.size) { index ->
-                val songi = playlist.songs[index]
 
-                Playlist_SongCard(
-                    songTitle = songi.title,
-                    artist = songi.artist,
-                    albumArt = songi.image,
-                    onPlayClick = {
-                        navController.navigate("player")
-                    }
-                )
+
             }
         }
     }
-}
+
 

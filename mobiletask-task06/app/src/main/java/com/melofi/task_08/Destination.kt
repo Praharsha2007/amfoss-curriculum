@@ -6,11 +6,13 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 
+
+//Sealed class is a restricted class hierarchy. So everything related to it must be defined in its own file only. Cannot randomly extend it from somewhere else. Sealed class can handle dynamic routing but enum cannot Enum is for fixed constants.                        
 sealed class Destination(
     val route: String,
     val label: String,
     val icon: ImageVector
-) {
+)  {
 
     object Home : Destination(
         route = "home",

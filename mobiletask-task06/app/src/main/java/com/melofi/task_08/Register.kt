@@ -22,11 +22,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-
+import kotlinx.coroutines.launch
 
 
 @Composable
 fun Register(navController: NavHostController) {
+
+    var email by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+    val scope = rememberCoroutineScope() //coroutine handles asynchronous requests.
 
     Column(
         modifier = Modifier
@@ -34,121 +40,9 @@ fun Register(navController: NavHostController) {
             .background(Color.Black)
             .padding(horizontal = 20.dp)
     ) {
-        T()
-        Register_Title()
-        Email()
-        Username()
-        Password()
-        Registering(navController)
-        Log(navController)
-    }
-}
 
+        Spacer(modifier = Modifier.height(50.dp))
 
-
-@Composable
-fun Register_Title() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 25.dp),
-        verticalArrangement = Arrangement.Center
-    ){
-        Text(
-            text = "REGISTER",
-            modifier = Modifier.fillMaxWidth(),
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
-    }
-}
-
-@Composable
-fun Email() {
-    var email by remember { mutableStateOf("") }
-
-    Column (
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 40.dp)
-    ){
-        Text(text = "Enter Email", color = Color.White)
-
-        OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
-            label = { Text("Enter your email") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            leadingIcon = {
-                Icon(Icons.Default.Email, contentDescription = "EmailIcon")
-            },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(15.dp)
-        )
-    }
-}
-
-@Composable
-fun Username() {
-    var username by remember { mutableStateOf("") }
-
-    Column (
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp)
-    ){
-        Text(text = "Enter Username", color = Color.White)
-
-        OutlinedTextField(
-            value = username,
-            onValueChange = { username = it },
-            label = { Text("Enter your username") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            leadingIcon = {
-                Icon(Icons.Default.AccountCircle, contentDescription = "UsernameIcon")
-            },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(15.dp)
-        )
-    }
-}
-
-@Composable
-fun Password() {
-    var password by remember { mutableStateOf("") }
-
-    Column (
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp)
-    ){
-        Text(text = "Enter Password", color = Color.White)
-
-        OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
-            visualTransformation = PasswordVisualTransformation(),
-            label = { Text("Enter your password") },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            leadingIcon = {
-                Icon(Icons.Default.Lock, contentDescription = "PasswordIcon")
-            },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(15.dp)
-        )
-    }
-}
-
-@Composable
-fun T() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 50.dp),
-        verticalArrangement = Arrangement.Center
-    ){
         Text(
             text = "MeLofi",
             modifier = Modifier.fillMaxWidth(),
@@ -157,81 +51,135 @@ fun T() {
             textAlign = TextAlign.Center,
             color = Color.White
         )
+
         Text(
             text = "Where music feels like home",
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,
             fontStyle = FontStyle.Italic,
             fontSize = 15.sp,
-            fontFamily = FontFamily.SansSerif,
             color = Color.LightGray
         )
-    }
-}
 
+        Spacer(modifier = Modifier.height(25.dp))
 
+        Text(
+            text = "REGISTER",
+            modifier = Modifier.fillMaxWidth(),
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            color = Color.White
+        )
 
-@Composable
-fun Registering(navController: NavHostController) {
+        Spacer(modifier = Modifier.height(40.dp))
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp)
-    ) {
+        Text("Enter Email", color = Color.White)
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Enter your email") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            leadingIcon = { Icon(Icons.Default.Email, null) },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(15.dp)
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text("Enter Username", color = Color.White)
+        OutlinedTextField(
+            value = username,
+            onValueChange = { username = it },
+            label = { Text("Enter your username") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+            leadingIcon = { Icon(Icons.Default.AccountCircle, null) },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(15.dp)
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Text("Enter Password", color = Color.White)
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            visualTransformation = PasswordVisualTransformation(),
+            label = { Text("Enter your password") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            leadingIcon = { Icon(Icons.Default.Lock, null) },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(15.dp)
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Button(
             onClick = {
-                navController.navigate("home") {
-                    popUpTo("login") { inclusive = true }
+                scope.launch {
+                    errorMessage = null
+
+                    try {
+                        val response = RetrofitInstance.api.register(
+                            RegisterRequest(username, email, password)
+                        )
+
+                        if (response.isSuccessful) {
+                            navController.navigate("home") {
+                                popUpTo("login") { inclusive = true }
+                            }
+                        } else {
+                            errorMessage = "Registration failed"
+                        }
+
+                    } catch (e: Exception) { //No internet or server down
+                        errorMessage = e.message ?: "Unknown error"
+                    }
+
+
+
                 }
             },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(15.dp),
             colors = ButtonDefaults.buttonColors(
-                contentColor = Color.White,
                 containerColor = Color(0xFF9B7A5B)
             )
         ) {
             Text(
-                text = "Register",
+                text ="Register",
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                color = Color.White
+            )
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        errorMessage?.let {
+            Text(
+                text = it,
+                color = Color.White,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
         }
-    }
-}
 
-@Composable
-fun Log(navController: NavHostController) {
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp),
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = "If you already have an account, then Login",
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
+        Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {
-                navController.popBackStack()
-            },
+            onClick = { navController.popBackStack() },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(15.dp),
             colors = ButtonDefaults.buttonColors(
-                contentColor = Color.White,
                 containerColor = Color(0xFF9B7A5B)
             )
         ) {
             Text(
                 text = "Login",
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White
             )
         }
     }

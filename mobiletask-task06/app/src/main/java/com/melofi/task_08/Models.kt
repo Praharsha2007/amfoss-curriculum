@@ -19,7 +19,7 @@ data class RegisterRequest(
     val password: String
 )
 
-data class SSong(
+data class Song(
     val id: String,
     @SerializedName("track_name")
     val trackName: String,
